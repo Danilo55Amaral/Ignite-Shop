@@ -118,4 +118,39 @@ da página que é a pasta.
 - Dá para ter vários níveis de subpastas dentro de pages assim dá para criar estruturas bem complexas de 
 páginas dentro do Next utilizando esse sistema de File-System Routing.
 
+# Configurando documento HTML 
+
+- Dentro de outros projetos que não utilizam o Next existe um arquivo index.html dentro da estrutura de pastas
+para conseguir modificar coisas no doccumento global html , é necessário criar um arquivo dentro da pasta pages
+chamado _document.tsx  esse arquivo também será um componente e dentro desse componente é importado agumas 
+estruturas de dentro do next/document
+
+import { Html, Head, Main, NextScript } from 'next/document'
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
+}
+
+## Google Fonts
+- Dentro do Head eu posso colar o link de importação da fonte do Google Fonts, é importante fechar as tags unicas 
+dos links o crossorigin precisa ficar assim crossOrigin="anonymous"
+
+- PS = Toda vez que for feita alguma modificação dentro do _document.tsx é necessário reiniciar o servidor de 
+desenvolviemto rodando novamente a aplicação em modo dev.
+
+- Após verificar no inspecionar do navegador notei que os links da fonte não estava sendo gerados no 
+heade do navegador, isso acontece por que o Next cria uma pasta de cache chamada .next, para resolver
+basta parar o projeto e delear essa pasta , em seguida rodar o projeto em modo dev novamente que a 
+pasta é recriada, isso resolveu o problema.
+
+- Tudo que é colocado dentro do arquivo _document aparece em todas as páginas.
+
 
