@@ -237,5 +237,37 @@ export default function Document() {
   )
 }
 
+# Estilos globais
 
+- Eu criei dentro da pasta styles um arquivo global.ts eu crio dentro desse arquivo 
+um componente que chamei de globalStyles e utilizei a função globalCss que importei 
+de dentro do meu arquivo index onde fiz a configuração do stitcher, dentro desse 
+componente eu coloco meus estilos Globais.
+
+import { globalCss } from ".";
+
+export const globalStyles = globalCss({
+    '*': {
+        margin: 0,
+        padding: 0,
+    },
+
+    body: {
+        '-webkit-font-smoothing': 'antialiased',
+    },
+
+    'body, input, textarea, button': {
+        fontFamily: 'Roboto',
+        fontWeight: 400,
+    }
+})
+
+## _app.tsx
+
+- Vamos colocar esse globalStyles dentro de _app.tsx esse arquivo app funciona como um 
+container para as páginas da aplicação é como um componente que carrega junto com todas 
+as páginas da aplicação. 
+
+- Basta importar o globalStyles e chamar  como uma função, é interessante deixar logo após 
+as importações fora da função do componente. 
 
