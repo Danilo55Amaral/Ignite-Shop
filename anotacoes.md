@@ -153,4 +153,89 @@ pasta é recriada, isso resolveu o problema.
 
 - Tudo que é colocado dentro do arquivo _document aparece em todas as páginas.
 
+# Configurando Stitches 
+
+- O Stitches é uma biblioteca alternativa ao Styled-Components porém tem uma api uma forma de
+escrever as estilizações de uma maneira um pouco diferente, muito bom para lidar com componentes 
+visuais que possuem muitas variações de estilos baseados em propriedades.
+link   https://stitches.dev 
+
+- Para instalar rodar o comando seguinte  npm install @stitches/react   
+
+- Dentro da pasta Styles eu crio um arquivo index.ts, eu importo uma função 
+chamada createStitches essa função devolve uma série de configurações, essa 
+biblioteca permite que se tenha um tema global, eu devo exportar esse createStitches
+e para isso eu exporto fazendo uma desestruturação fazendo todas as exportações 
+que for necessária.
+
+import { createStitches } from "@stitches/react";
+
+export const {
+    config,
+    styled,
+    css,
+    globalCss,
+    keyframes,
+    getCssText,
+    theme,
+    createTheme,
+} = createStitches({
+    theme: {
+        colors: {
+            rocketseat: '#8257e6',
+        }
+    }
+})
+
+- Para criar um componente estilizado devemos criar como um componente separado assim como
+é no styled-components. Primeiro eu importo o styled de dentro de styles, eu crio a estrutura 
+como um componente passando o styled, o primeiro parametro do styled é a tag html utilizada 
+e o segundo paramtro é um objeto com as estilizações.
+
+- Aqui as coisas se diferem do Styled-components por que no stitches escrevemos as estilizações 
+como sendo um objeto JavaScript e a sintaxe precisa ser uma sintaxe JavaScript. 
+
+import { styled } from "../styles"
+
+const Button = styled('button', {
+  backgroundColor: '$rocketseat'
+})
+
+export default function Home() {
+  return (
+    <Button>Hello Wolrd</Button>
+  )
+}
+
+- Como o Next utiliza o conceito de SSR alguns frameworks como o proprio stitches, caso o JS do 
+Browser seja desabilitado a estilização desaparece, diferente do que acontece com o html da página 
+para resolver isso o proprio stitches deixa uma solução na documentação.
+
+- Dentro do _document utilizamos criamos uma tag style e importamos o getCssText essa função faz com 
+que quando o usuario carregar a página ela vai pelo servidor Node.Js do Next vai montar essa página
+la dentro verificar qual todo o código css necessário para aquela página e retorna dessa função e 
+escreve todo esse código Css dentro da tag style. 
+
+import { Html, Head, Main, NextScript } from 'next/document'
+import { getCssText } from '../styles'
+
+export default function Document() {
+  return (
+    <Html lang="en">
+      <Head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+      
+      <style id="stitches" dangerouslySetInnerHTML={{__html: getCssText() }} />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
+}
+
+
 
