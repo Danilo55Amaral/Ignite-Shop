@@ -64,14 +64,14 @@ npm run dev ------> Ele vai rodar o ambiente de desenvolvimento da aplicação
 npm run build ----> Ele vai executar a build de produção 
 npm start -----> Ele vai rodar o ambiente de produção
 
-# Pasta Pages 
+## Pasta Pages 
 - O Next possue um local para colocar as páginas da aplicaçao toda vez que for 
 criar uma pagina, uma rota que o usuário vai acessar esse componente sempre será 
 criado dentro da pasta pages. 
 
 - Eu posso criar a pasta src e posso mover a pasta pages para dentro dela.
 
-# TypeScript
+## TypeScript
 
 - O Next gera um arquivo de configuração do typeScript de forma automatica quando instalamos 
 basta instalar o typeScript o Types/react e o types/node como dependencias de desenvolvimento rodando o comando abaixo 
@@ -79,9 +79,43 @@ basta instalar o typeScript o Types/react e o types/node como dependencias de de
 
 - Após instalar as dependendicas basta rodar o projeto e o Next já cria o arquivo do TypeScript 
 
-# index 
+## index 
 
-- O arquivo index que está dentro da pasta pages sempre vai ser a Home page 
+- O arquivo index que está dentro da pasta pages sempre vai ser a Home page
 
+# Criando rotas da aplicação
+
+## File-system Routing
+- Uma das coisas mais legais no Next é o File-system- Routing (Roteamento baseado em arquivos físicos)
+para eu criar uma página que será uma rota basta criar essa página dentro da pasta pages, e esse componente
+será exportado como default. 
+
+- Existem rotas dentro da aplicação que precisam receber parametros como na rota de produto que é necesário 
+saber qual produto o usuário clicou, dentro do next quando trabalhamos com paramtros nessas rotas é bem 
+imteressante por que o nome dos arquivos podem ser parametrizados, para isso eu posso criar com [] e dentro 
+passar o paramtros que quero receber [id], isso faz o Next entender que qualquer coisa que for digitado 
+depois da rota ele vai cair na rota com parametrizada. 
+ Eu posso ter acesso a esses paramtros importando o useRouter de dentro do next/router
+    import { useRouter } from "next/router";
+
+ E posso desestruturar uma propriedade chamada query e acessa-las:
+
+                    import { useRouter } from "next/router";
+
+                    export default function Product() {
+                        const { query } = useRouter()
+
+                        return (
+                            <h1>Product: {JSON.stringify(query)}</h1>
+                        )
+                    }
+    
+
+- Da para criar subpastas dentro da pasta pages e essas pastas serão as páginas, dentro delas posso criar 
+arquivos index.tsx e tambám outros componetes que também viram páginas, o index se torna a rota principal 
+da página que é a pasta.
+
+- Dá para ter vários níveis de subpastas dentro de pages assim dá para criar estruturas bem complexas de 
+páginas dentro do Next utilizando esse sistema de File-System Routing.
 
 
