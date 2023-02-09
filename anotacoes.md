@@ -285,3 +285,5 @@ formatos mais recentes, cria imagens responsivas.
 depois eu chamo o componente passando o caminho da imagem. Noteque ao inspencionar ele 
 converteu para um formato novo chamado webp que super performatico.
 
+# Estrutura da Home 
+
