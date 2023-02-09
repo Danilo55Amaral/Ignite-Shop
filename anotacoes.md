@@ -271,3 +271,8 @@ as páginas da aplicação.
 - Basta importar o globalStyles e chamar  como uma função, é interessante deixar logo após 
 as importações fora da função do componente. 
 
+# Cabeçalho da aplicação
+
+- Eu posso criar minhas estilizações em pastas com arquivos separados igual faço no styled 
+
+
