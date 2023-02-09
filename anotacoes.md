@@ -275,4 +275,13 @@ as importações fora da função do componente.
 
 - Eu posso criar minhas estilizações em pastas com arquivos separados igual faço no styled 
 
+# Imagens no Next.js 
+
+- O Next otimiza de forma automatizada todas as imagens utilizadas na aplicação, ele transforma
+a imagem para o tamanho necessário que vai ser utilizado na aplicação, ele cria as imagens em 
+formatos mais recentes, cria imagens responsivas. 
+ 
+- Para utilizar o componente Image do next eu devo importar de dentro de nex/future/image , 
+depois eu chamo o componente passando o caminho da imagem. Noteque ao inspencionar ele 
+converteu para um formato novo chamado webp que super performatico.
 
