@@ -287,3 +287,18 @@ converteu para um formato novo chamado webp que super performatico.
 
 # Estrutura da Home 
 
+# Criando carrossel
+
+- O Radix ui está desenvolvendo uma estrutura de caroussel porém nesse momento ainda não está pronta. 
+- Aqui utilizamos o keen-slider para isntalar basta rodar o comando:  npm install keen-slider 
+
+- Importamos de dentro de keen-slider/react um hook chamado useKeenSlider também é necessário 
+importar um css que vem de dentro da lib , dentro do meu componente eu utilizo o hook useKeenSlider 
+passando como objetos algumas configurações como perView que é a quantidade de item por pagina que 
+queremos definir por slide, eu vou desestruturar de com um array uma propriedade chamada sliderRef 
+vou pegar a div que está por volta dos slides que eu quero fazer e eu passo ref={sliderRef}.
+Para a estilização funcionar é necessário passar algumas className, a do Container precisa ser keen-slider
+e para cada item do meu slider eu devo passar a className keen-slider__slide. 
+
+- O keenSlider possue dentro do slides uma opção chamada spacing que dá para utilizar um espacamento.
+
